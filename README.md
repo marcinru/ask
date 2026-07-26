@@ -1,2 +1,3 @@
 # ask
-Simple node.js console app
+
+simple node.js console app, just for learning
