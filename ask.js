@@ -1,4 +1,4 @@
-const data = require('./questions');
+const { questions } = require('./questions');
 
 const readline = require('readline');
 
@@ -20,7 +20,7 @@ function collectAnswers(questions, done) {
   rl.question(questions[0], questionAnswered);
 }
 
-collectAnswers(data.questions, (answers) => {
+collectAnswers(questions, (answers) => {
   console.log('Thank you for your answers!');
   console.log(answers);
   process.exit();
