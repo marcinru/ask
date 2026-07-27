@@ -1,24 +1,5 @@
-const { questions } = require('./questions');
-
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-function collectAnswers(questions, done) {
-  const answers = [];
-  const questionAnswered = (answer) => {
-    answers.push(answer.trim());
-    if (answers.length < questions.length) {
-      rl.question(questions[answers.length], questionAnswered);
-    } else {
-      return done(answers);
-    }
-  };
-  rl.question(questions[0], questionAnswered);
-}
+const questions = require('./data/questions');
+const collectAnswers = require('./lib/collectAnswers');
 
 collectAnswers(questions, (answers) => {
   console.log('Thank you for your answers!');

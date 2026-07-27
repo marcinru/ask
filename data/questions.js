@@ -4,4 +4,4 @@ const questions = [
   'What are you going to do with Node.js? ',
 ];
 
-module.exports = { questions };
+module.exports = questions;
