@@ -9,7 +9,7 @@ collectAnswers(questions, (answers) => {
   answers.forEach((answer) => {
     md += `* ${answer}\n`;
   });
-  console.log('md', md);
+
   fs.writeFile('answers.md', md, (err) => {
     if (err) {
       console.error('Error writing file:', err);
