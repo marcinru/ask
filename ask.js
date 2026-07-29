@@ -1,12 +1,21 @@
 const questions = require('./data/questions');
 const collectAnswers = require('./lib/collectAnswers');
+const fs = require('fs');
 
-const answerEvents = collectAnswers(questions, (answers) => {
+collectAnswers(questions, (answers) => {
   console.log('Thank you for your answers!');
   console.log(answers);
-  process.exit();
-});
-
-answerEvents.on('answer', (answer) => {
-  console.log(`The answer is ${answer}`);
+  let md = 'Your answers:\n\n';
+  answers.forEach((answer) => {
+    md += `* ${answer}\n`;
+  });
+  console.log('md', md);
+  fs.writeFile('answers.md', md, (err) => {
+    if (err) {
+      console.error('Error writing file:', err);
+      return;
+    }
+    console.log('answers file created');
+    process.exit();
+  });
 });
